@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 import '../cubit/home_cubit.dart';
 
@@ -22,8 +23,8 @@ class SelectedColor extends StatelessWidget {
           },
           child: Container(
             padding: const EdgeInsets.all(2),
-            width: 20,
-            height: 20,
+            width: 50,
+            height: 50,
             decoration: BoxDecoration(
               border: Border.all(
                 color: cubit.currentColor==index? Colors.yellowAccent:Colors.black,
@@ -32,8 +33,9 @@ class SelectedColor extends StatelessWidget {
               shape: BoxShape.circle,
             ),
             child: Container(
+              height: 30,
               decoration: BoxDecoration(
-                  color: Color(int.parse('0xFF${cubit.colors[index]}')),
+                  color: HexColor(cubit.colors[index]),
                   shape: BoxShape.circle),
             ),
           ),
@@ -41,7 +43,7 @@ class SelectedColor extends StatelessWidget {
         separatorBuilder: (context, index) => Container(
           width: 10,
         ),
-        itemCount: cubit.material.length,
+        itemCount: cubit.colors.length,
       ),
     );
   }

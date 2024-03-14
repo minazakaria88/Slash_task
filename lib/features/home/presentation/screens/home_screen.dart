@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
                 crossAxisCount: 2,
                 childAspectRatio: 0.57,
                 children: List.generate(
-                  20,
+                  200,
                   (index) => ProductItem(
                     index: index,
                     product:  di.s1<AppCubit>().product[index],

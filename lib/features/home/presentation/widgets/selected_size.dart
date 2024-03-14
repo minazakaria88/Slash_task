@@ -13,7 +13,7 @@ class SelectedSize extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 40,
+      height: 50,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => GestureDetector(
@@ -26,11 +26,11 @@ class SelectedSize extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(12.0),
               child: Text(
                 cubit.size[index],
                 style:
-                const TextStyle(fontSize: 22, color: Colors.white),
+                const TextStyle(fontSize: 16, color: Colors.white),
               ),
             ),
           ),

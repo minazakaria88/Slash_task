@@ -31,6 +31,7 @@ class AppCubit extends Cubit<AppState> {
 
   DetailedProduct ? detailedProduct;
   void getDetailedProductData(int id) async {
+    detailedProduct=null;
     emit(LoadingDetailedProductDataState());
     var result = await homeRepo.getProductData(id);
     result.fold(
@@ -60,32 +61,39 @@ class AppCubit extends Cubit<AppState> {
     size=[];
     colors=[];
     material=[];
+    currentMaterial=0;
+    currentColor=0;currentIndex=0;
     Completer completer=Completer();
-    for(var i in detailedProduct!.variations[0].productPropertiesValues)
+    for(var k in detailedProduct!.variations)
       {
+        for(var i in k.productPropertiesValues)
+        {
           if(i.property=='Size')
-            {
-              size.add(i.value);
-            }
+          {
+            size.add(i.value);
+          }
           else if(i.property=='Materials')
-            {
-              material.add(i.value);
-            }
+          {
+            material.add(i.value);
+          }
           else
-            {
-              if(i.value.contains('#'))
-                {
-                  i.value.replaceAll('#', '3');
-                }
-              colors.add(i.value);
-              print(colors);
+          {
+            if(!i.value.contains('#')) {
+              String s='#${i.value}';
+              colors.add(s);
             }
+            else {
+              colors.add(i.value);
+            }
+            print(colors);
+          }
+        }
       }
     completer.complete(0);
     return completer.future;
   }
 
-  List<bool> color=List.generate(20, (index) => false);
+  List<bool> color=List.generate(200, (index) => false);
   void changeColor(int index)
   {
     color[index]=!color[index];

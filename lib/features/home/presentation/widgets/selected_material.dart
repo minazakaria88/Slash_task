@@ -30,7 +30,7 @@ class SelectedMaterial extends StatelessWidget {
               child: Text(
                 cubit.material[index],
                 style:
-                const TextStyle(fontSize: 20, color: Colors.white),
+                const TextStyle(fontSize: 16, color: Colors.white),
               ),
             ),
           ),

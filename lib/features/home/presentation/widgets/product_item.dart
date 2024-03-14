@@ -54,8 +54,10 @@ class ProductItem extends StatelessWidget {
                         Expanded(
                           child: Text(
                             product.name,
+                            maxLines: 2,
                             style: const TextStyle(
                               color: Colors.white,
+
                               fontWeight: FontWeight.w600,
                             ),
                           ),
