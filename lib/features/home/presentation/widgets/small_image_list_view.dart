@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:slash_task/core/utils/extensions.dart';
+import 'package:slash_task/features/home/presentation/cubit/home_cubit.dart';
 
 import '../cubit/home_state.dart';
 
 class SmallImageListView extends StatelessWidget {
   const SmallImageListView({
-    super.key, required this.state,
+    super.key, required this.cubit,
   });
-  final SuccessDetailedProductDataState state;
+  final AppCubit cubit;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -19,7 +20,7 @@ class SmallImageListView extends StatelessWidget {
           width: 50,
           child: Image(
             fit: BoxFit.fill,
-            image: NetworkImage(state.product.variations[0]
+            image: NetworkImage(cubit.detailedProduct!.variations[0]
                 .productVarientImages[index].imagePath),
           ),
         ),
@@ -27,7 +28,7 @@ class SmallImageListView extends StatelessWidget {
           width: 10,
         ),
         itemCount:
-        state.product.variations[0].productVarientImages.length,
+        cubit.detailedProduct!.variations[0].productVarientImages.length,
       ),
     );
   }

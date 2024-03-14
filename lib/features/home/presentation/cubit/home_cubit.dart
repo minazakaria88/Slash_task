@@ -1,5 +1,7 @@
 
 
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:slash_task/features/home/data/models/detailed_product.dart';
 import 'package:slash_task/features/home/data/repos/home_repo.dart';
@@ -39,20 +41,26 @@ class AppCubit extends Cubit<AppState> {
       ),
       (products) {
         detailedProduct=products;
-        getProperty();
-        emit(
-        SuccessDetailedProductDataState(
-          product: products,
-        ),
-      );}
+        getProperty().then((value) {
+          emit(
+            SuccessDetailedProductDataState(
+              product: products,
+            ),
+          );
+        });
+        }
     );
   }
 
   List<String> size=[];
   List<String> colors=[];
   List<String> material=[];
-  void getProperty()
+  Future getProperty()async
   {
+    size=[];
+    colors=[];
+    material=[];
+    Completer completer=Completer();
     for(var i in detailedProduct!.variations[0].productPropertiesValues)
       {
           if(i.property=='Size')
@@ -65,9 +73,16 @@ class AppCubit extends Cubit<AppState> {
             }
           else
             {
+              if(i.value.contains('#'))
+                {
+                  i.value.replaceAll('#', '3');
+                }
               colors.add(i.value);
+              print(colors);
             }
       }
+    completer.complete(0);
+    return completer.future;
   }
 
   List<bool> color=List.generate(20, (index) => false);
@@ -75,6 +90,25 @@ class AppCubit extends Cubit<AppState> {
   {
     color[index]=!color[index];
     emit(ChangeState());
+  }
+  int currentIndex=0;
+  void chooseSize(int index)
+  {
+    currentIndex=index;
+    emit(ChangeState());
+  }
+  int currentMaterial=0;
+  void chooseMaterial(int index)
+  {
+    currentMaterial=index;
+    emit(ChangeState());
+  }
+
+  int currentColor=0;
+  void chooseColor(int index)
+  {
+     currentColor=index;
+     emit(ChangeState());
   }
 
 

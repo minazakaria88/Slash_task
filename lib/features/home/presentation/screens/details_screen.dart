@@ -28,7 +28,7 @@ class DetailsScreen extends StatelessWidget {
         builder: (context, state) {
           var cubit = di.s1<AppCubit>();
           if (state is SuccessDetailedProductDataState) {
-            return SuccessWidget(cubit: cubit, state: state,);
+            return SuccessWidget(cubit: cubit);
           } else if (state is ErrorDetailedProductDataState) {
             return Text(
               state.error,
