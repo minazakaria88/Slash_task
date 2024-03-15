@@ -20,14 +20,14 @@ class ImagesListView extends StatelessWidget {
           width: context.width-40,
           height: 80,
           child: Image(
-            image: NetworkImage(cubit.detailedProduct!.variations[0].productVarientImages[index].imagePath),
+            image: NetworkImage(cubit.detailedProduct!.variations[cubit.currentColor].productVarientImages[index].imagePath),
             fit: BoxFit.fill,
           ),
         ),
         separatorBuilder:(context, index) =>Container(
           width: 30,
         ),
-        itemCount: cubit.detailedProduct!.variations[0].productVarientImages.length,
+        itemCount: cubit.detailedProduct!.variations[cubit.currentColor].productVarientImages.length,
       ),
     );
   }

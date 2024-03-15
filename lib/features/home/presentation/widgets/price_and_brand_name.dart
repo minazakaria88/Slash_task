@@ -17,7 +17,7 @@ class PriceAndBrandName extends StatelessWidget {
       children: [
         Expanded(
           child: Text(
-            'EGP ${cubit.detailedProduct!.variations[0].price.toString()}',
+            'EGP ${cubit.detailedProduct!.variations[cubit.currentColor].price.toString()}',
             style: const TextStyle(
               color: Colors.white,
               fontSize: 20,

@@ -33,6 +33,7 @@ class HomeScreen extends StatelessWidget {
                     index: index,
                     product:  di.s1<AppCubit>().product[index],
                     onPressed: () {
+                      print(di.s1<AppCubit>().product[index].id);
                       di.s1<AppCubit>().getDetailedProductData(
                         di.s1<AppCubit>().product[index].id,
                           );

@@ -116,6 +116,7 @@ class AppCubit extends Cubit<AppState> {
   void chooseColor(int index)
   {
      currentColor=index;
+     print(detailedProduct!.variations[currentColor].price);
      emit(ChangeState());
   }
 

@@ -35,7 +35,7 @@ class SuccessWidget extends StatelessWidget {
             Center(
               child: SizedBox(
                 width: 50 *
-                    cubit.detailedProduct!.variations[0].productVarientImages
+                    cubit.detailedProduct!.variations[cubit.currentColor].productVarientImages
                         .length *
                     0.99,
                 child: SmallImageListView(

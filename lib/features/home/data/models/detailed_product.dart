@@ -19,10 +19,12 @@ class DetailedProduct {
 
 class Variations {
   late final int price;
+  late final int id;
   List<ProductVarientImages> productVarientImages = [];
   List<ProductPropertiesValues> productPropertiesValues = [];
   Variations.fromJson(Map<String, dynamic> json) {
     price = json['price'];
+    id=json['id'];
     json['ProductVarientImages'].forEach((e) {
       productVarientImages.add(ProductVarientImages.fromJson(e));
     });
